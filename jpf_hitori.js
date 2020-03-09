@@ -5,8 +5,8 @@
    Tutorial 11
    Review Assignment
 
-   Author: 
-   Date:   
+   Author: Ashlynn Hickman
+   Date: March 9, 2020
 
    Global Variables
    ================
@@ -47,9 +47,45 @@
 	
 */
 
+var allCells; 
+window.onload = startUp();
 
+function startUp(){
+   document.getElementById("puzzleTitle").innerHTML = "Puzzle 1";
+   document.getElementById("puzzle") = drawHitori(hitori1Numbers, hitori1Blocks, hitori1Rating);
+   var puzzleButtons = document.getElementsByClassName("puzzles");
+   for(var i = 0; i < puzzleButtons.length; i++){
+      puzzleButtons[i].onclick = switchPuzzle();
+   }
+   
+   setupPuzzle();
 
+   document.addEventListener("mouseup", findErrors());
+   document.addEventListener("mouseup", showSolution());
+};
 
+function switchPuzzle(e){
+   if(confirm("You will lose all of your progress! Continue?")){
+   var puzzleID = e.target.id;
+   document.getElementById("puzzleTitle").innerHTML = e.target.id;
+   // step 6b.
+   switch(puzzleID){
+      case "puzzle1": 
+         document.getElementById("puzzle").innerHTML = drawHitori(puzzle1);
+         break;
+      case "puzzle2":
+         document.getElementById("puzzle").innerHTML = drawHitori(puzzle2);
+         break;
+      case "puzzle3":
+         document.getElementById("puzzle").innerHTML = drawHitori(puzzle3);
+   }
+   setupPuzzle();
+   }
+}
+
+function setupPuzzle(){
+   var allCells = document.querySelectorAll("td")
+}
 
 
 
